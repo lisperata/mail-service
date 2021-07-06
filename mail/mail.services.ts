@@ -1,16 +1,14 @@
-import { instance } from "../common/axios.client";
+import { getContactsByListId } from '../list/list.services';
 
-class MailService {
-  public static async sendMail(
-    listId: string,
-    title: string,
-    content: string
-  ): Promise<void> {
-    const body: URLSearchParams = new URLSearchParams();
-    body.append('uuid', listId || '');
+const getContacts = async (
+  listId: string,
+  title: string,
+  content: string
+): Promise<void> => {
+  const body: URLSearchParams = new URLSearchParams();
+  body.append('uuid', listId || '');
 
-    console.log((await instance.post('/lists', body)).data);
-  }
-}
+  console.log(await getContactsByListId(body));
+};
 
-export default MailService;
+export default getContacts;

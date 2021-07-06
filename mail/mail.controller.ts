@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import MailService from './mail.services';
+import getContacts from './mail.services';
 
 export const sendMail = async (
   res: Response,
@@ -8,7 +8,7 @@ export const sendMail = async (
   content: string
 ): Promise<void> => {
   try {
-    await MailService.sendMail(listId, title, content);
+    await getContacts(listId, title, content);
     res.type('plain').status(200).send('Email was sent successfully');
   } catch (err) {
     res.status(500).send('Internal Server Error');
