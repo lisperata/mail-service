@@ -1,8 +1,8 @@
 import { instance } from '../common/axios.client';
-import { ContactsOfList } from './list.interfaces';
+import { ContactOfList } from './list.interfaces';
 
 export const getContactsByListId = async (
   body: URLSearchParams
-): Promise<ContactsOfList> => {
+): Promise<ContactOfList[]> => {
   return (await instance.post('/lists', body)).data;
 };
